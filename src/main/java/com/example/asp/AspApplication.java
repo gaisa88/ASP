@@ -13,7 +13,7 @@ public class AspApplication {
 
         AspClient aspClient = ctx.getBean(AspClient.class);
 
-        String iin = "940331451224";
+        String iin = "881203350381";
         if (args.length > 0) {
             iin = args[0];
         }
