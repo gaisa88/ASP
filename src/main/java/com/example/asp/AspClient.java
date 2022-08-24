@@ -24,7 +24,7 @@ public class AspClient extends WebServiceGatewaySupport {
         System.out.println();
         System.out.println("Requesting scoring for iin: " + iin);
 
-        JAXBElement<SendToASPResponse> obj = (JAXBElement<SendToASPResponse>) getWebServiceTemplate().marshalSendAndReceive("http://test2.1cb.kz/ASP/Service", request);
+        JAXBElement<SendToASPResponse> obj = (JAXBElement<SendToASPResponse>) getWebServiceTemplate().marshalSendAndReceive("http://test2.1cb.kz/ASP/Service", request, new SecurityHeader(header));
 
         SendToASPResponse response = obj.getValue();
         return response;
@@ -34,10 +34,7 @@ public class AspClient extends WebServiceGatewaySupport {
         ServiceReturn Return = response.getReturn();
 
         if (Return.getErrorCode() == "0") {
-            System.out.println();
-            System.out.println(Return.getResponseData());
             System.out.println(Return.getErrorCode());
-            System.out.println(Return.getErrorMessage());
         } else {
             System.out.println("Error request " + Return.getErrorCode());
         }
